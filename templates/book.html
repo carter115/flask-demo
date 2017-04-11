@@ -6,24 +6,32 @@ Book -- by su
 
 {% block content %}
 <div class="container">
+{% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">×</button> {{ message }}
+    </div>
+{% endfor %}
 {% block page_content %}
     <div class="page-header">
         数据：
         <p>
-        {% if name %}
+        {% if name and phone %}
             {{ name }}
-        {% endif %}
         <br />
-        {% if phone %}
             {{ phone }}
-        {% endif %}
         <br />
-        {% if photoset %}
-            {{ photoset }}
+            {{ phoneset }}
         {% endif %}
         </p>
     </div>
-    {{ wtf.quick_form(form) }}
+{#    <form method="POST">#}
+{#        {{ form.hidden_tag() }}#}
+{#        {{ form.name.label }} {{ form.name(id='name-field') }}#}
+{#        {{ form.phone.label }} {{ form.phone(id='phone-field') }} </br>#}
+{#        {{ form.phoneset.label }} {{ form.phoneset(id='phone-field') }}#}
+{#        {{ form.submit() }}#}
+{#    </form>#}
+    {{ wtf.quick_form(form,id="test-form") }}
 {% endblock %}
 </div>
 
