@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}
+    Index -- by su
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert">×
+                </button>
+            </div>
+        {% endfor %}
+
+{#        <h2>Welcome ...#}
+{#            <a type="button" class="btn btn-primary">{{ name }}</a>#}
+{#        </h2>#}
+
+        <h1>Hello, {% if name %}{{ name }}{% else %}Stranger{% endif %}</h1>
+        {% if known %}
+            <p>Pleased to meet you!</p>
+        {% else %}
+            <p>Happy to see you again!</p>
+        {% endif %}
+
+        {{ wtf.quick_form(form,horizontal_columns=('lg',2,3)) }}
+
+    </div>
+{% endblock %}
