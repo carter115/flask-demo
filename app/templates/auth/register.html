@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}
+    Registry -- by su
+{% endblock %}
+
+{% block content %}
+    {{ super() }}
+    <div class="container">
+
+    <h2>Register</h2><br>
+    <div class="col-sm-offset-2 col-sm-4">
+        {{ wtf.quick_form(form) }}
+    </div>
+    </div>
+{% endblock %}
